@@ -26,13 +26,13 @@ public class UserDetail {
 	String name;
 	@Embedded
 	Address homeAddress;
+	
 	@Embedded
 	@AttributeOverrides({
 	@AttributeOverride(name="city",
 	column=@Column(name="OFFICE_CITY_NAME")),
 	@AttributeOverride(name="state",
 	column=@Column(name="OFFICE_STATE_NAME"))})
-	
 	Address officeAddress;
 	
 
