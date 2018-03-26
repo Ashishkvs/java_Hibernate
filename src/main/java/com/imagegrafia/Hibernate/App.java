@@ -22,8 +22,11 @@ public class App {
 			student.setVehicle(vehicle);
 			session.beginTransaction();
 			
-		
-			session.save(student);
+		/**
+		 * we have to persist seperately child object along with parent
+		 *  object other wise exception will arise
+		 */
+			session.save(student); 
 			session.save(vehicle);
 			
 			
