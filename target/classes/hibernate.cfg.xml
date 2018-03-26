@@ -32,6 +32,8 @@
 
         <!-- Drop and re-create the database schema on startup -->
         <property name="hbm2ddl.auto">update</property>
+        <mapping class="com.imagegrafia.model.Student"/>
+        <mapping class="com.imagegrafia.model.Vehicle"/>
 
       
 
