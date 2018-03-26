@@ -17,7 +17,7 @@ public class App {
 		Session session = sessionFactory.openSession();
 		try {
 
-			Address add1 = new Address();
+			/*Address add1 = new Address();
 			add1.setCity("CUttcak");
 			add1.setState("Odisha");
 			Address add2 = new Address();
@@ -33,16 +33,25 @@ public class App {
 			emp.getListOfAddress().add(add1);
 			emp.getListOfAddress().add(add2);
 			emp.getListOfAddress().add(add3);
-
+*/
 			session.beginTransaction();
-			session.persist(emp);
-			session.getTransaction().commit();
+			Employee empl=session.get(Employee.class,1);
+			
+			session.close();
+			/**
+			 * example of proxy class 
+			 * When there is object or collection of object in 
+			 * an entity class BY DEFAULT HINERNATE WILL NOT FETCH 
+			 * such object (by default its lazy type only 1st level of member
+			 *  var will initialize i.e parent and composition will not)
+			 */
+			System.out.println(empl.getListOfAddress().size());
 
 		} catch (Exception e) {
 			// TODO: handle exception
 			System.out.println("Exception arised @" + e);
 		} finally {
-			session.close();
+			
 			sessionFactory.close();
 		}
 	}

@@ -1,8 +1,11 @@
 package com.imagegrafia.model;
 
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
 
+import javax.persistence.Column;
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -11,6 +14,10 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.Table;
+
+import org.hibernate.annotations.CollectionId;
+import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.annotations.Type;
 
 @Entity
 @Table(name="employee")
@@ -24,7 +31,12 @@ public class Employee {
 	@JoinTable(name="EMPLOYEE_ADDRESS",
 			joinColumns=@JoinColumn(name="USER_ID")
 			) //to override auto-gen default table name
-	Set<Address> listOfAddress=new HashSet<Address>();
+	/*
+	 * generic generatior is used to cretae unique key by hibernate
+	 * */
+	@GenericGenerator(name="increment",strategy="increment")
+	@CollectionId(columns= {@Column(name="ADDRESS_ID")},generator="increment",type=@Type(type="long"))
+	Collection<Address> listOfAddress=new ArrayList<Address>();
 
 	public int getId() {
 		return id;
@@ -42,11 +54,12 @@ public class Employee {
 		this.name = name;
 	}
 
-	public Set<Address> getListOfAddress() {
+
+	public Collection<Address> getListOfAddress() {
 		return listOfAddress;
 	}
 
-	public void setListOfAddress(Set<Address> listOfAddress) {
+	public void setListOfAddress(Collection<Address> listOfAddress) {
 		this.listOfAddress = listOfAddress;
 	}
 
