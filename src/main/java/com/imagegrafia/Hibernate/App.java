@@ -17,9 +17,16 @@ public class App {
 		try {
 			Vehicle vehicle=new Vehicle();
 			vehicle.setName("BMW2");
+			
+			Vehicle vehicle2=new Vehicle();
+			vehicle2.setName("AUdi");
+			
 			Student student = new Student();
 			student.setName("Rahul2");
-			student.setVehicle(vehicle);
+			
+			student.getListofVehicle().add(vehicle);
+			student.getListofVehicle().add(vehicle2);
+			
 			session.beginTransaction();
 			
 		/**
@@ -28,6 +35,7 @@ public class App {
 		 */
 			session.save(student); 
 			session.save(vehicle);
+			session.save(vehicle2); //NOTE THIS
 			
 			
 			

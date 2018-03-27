@@ -1,10 +1,14 @@
 package com.imagegrafia.model;
 
+import java.util.ArrayList;
+import java.util.Collection;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
 @Entity
@@ -14,16 +18,15 @@ public class Student {
 	int id;
 	String name;
 	
-	@OneToOne
-	@JoinColumn(name="VEHICLE_ID")  //in order to override deafult gen column name
-	Vehicle vehicle;
+	@OneToMany
+	Collection<Vehicle> listofVehicle =new ArrayList<Vehicle>();
 	
-	
-	public Vehicle getVehicle() {
-		return vehicle;
+
+	public Collection<Vehicle> getListofVehicle() {
+		return listofVehicle;
 	}
-	public void setVehicle(Vehicle vehicle) {
-		this.vehicle = vehicle;
+	public void setListofVehicle(Collection<Vehicle> listofVehicle) {
+		this.listofVehicle = listofVehicle;
 	}
 	public int getId() {
 		return id;
