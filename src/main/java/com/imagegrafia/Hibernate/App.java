@@ -32,6 +32,10 @@ public class App {
 		/**
 		 * we have to persist seperately child object along with parent
 		 *  object other wise exception will arise
+		 *  By default it will create one more table for @ oneToMany relationship
+		 *  establishing relatioship b/w student and vehicle
+		 *  NOTE (TABLE NAME AND ITS COLUMN ALL GEN based on class NAme and CollectionNAME
+		 *  
 		 */
 			session.save(student); 
 			session.save(vehicle);
