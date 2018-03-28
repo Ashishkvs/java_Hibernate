@@ -27,7 +27,7 @@ public class Employee {
 	int id;
 	String name;
 	
-	@ElementCollection
+	@ElementCollection //in order to generate unique id for EMBEDDED collection object we use all this hibernated based annotation 
 	@JoinTable(name="EMPLOYEE_ADDRESS",
 			joinColumns=@JoinColumn(name="USER_ID")
 			) //to override auto-gen default table name
