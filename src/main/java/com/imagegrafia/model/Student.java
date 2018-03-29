@@ -18,7 +18,7 @@ public class Student {
 	int id;
 	String name;
 	
-	@OneToMany //(by degualt it will fetch student primary key and vehicle primary key for mapping nad we can give new name if we want)
+	@OneToMany //(by defualt it will fetch student primary key and vehicle primary key for mapping nad we can give new name if we want)
 	Collection<Vehicle> listofVehicle =new ArrayList<Vehicle>();
 	
 
